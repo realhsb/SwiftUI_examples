@@ -12,6 +12,7 @@ struct CarouselCardListApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            ExampleContentView(newsListViewModel: NewsListViewModel())
         }
     }
 }
