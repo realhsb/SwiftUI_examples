@@ -27,28 +27,31 @@ struct ListItem: Identifiable {
 
 struct ContentView: View {
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack {
-                ForEach(ListItem.preview) { item in
-                    item.color
+        GeometryReader { proxy in
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(ListItem.preview) { item in
+                        item.color
                         
-                        .frame(width: 400, height: 500)
-                        .overlay {
-                            Text(item.title)
-                        }
-                        .frame(width: 1200)
-                        .scrollTransition(.interactive, axis: .horizontal) { effect, phase in
-                            effect
-                                .scaleEffect(phase.isIdentity ? 1 : 0.8)
-                                .offset(x: offset(for: phase))
-                                .blur(radius: 0.5)
+                            .frame(width: 400, height: 500)
+                            .overlay {
+                                Text(item.title)
+                            }
+                            .frame(width: proxy.size.width, height: proxy.size.height)
+                            .scrollTransition(.interactive, axis: .horizontal) { effect, phase in
+                                effect
+                                    .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                                    .offset(x: offset(for: phase))
+                                    .blur(radius: 0.5)
                                 
-                        }
+                            }
                     }
                 }
-            .scrollTargetLayout()
+                .scrollTargetLayout()
             }
-        .scrollTargetBehavior(.viewAligned)
+            .scrollTargetBehavior(.viewAligned)
+            .scrollIndicators(.hidden)
+        }
             
     }
     
