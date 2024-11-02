@@ -42,7 +42,7 @@ struct ContentView: View {
                                 effect
                                     .scaleEffect(phase.isIdentity ? 1 : 0.8)
                                     .offset(x: offset(for: phase))
-                                    .blur(radius: 0.5)
+//                                    .blur(radius: 0.5)
                                 
                             }
                     }
@@ -52,7 +52,6 @@ struct ContentView: View {
             .scrollTargetBehavior(.viewAligned)
             .scrollIndicators(.hidden)
         }
-            
     }
     
     func offset(for phase: ScrollTransitionPhase) -> Double {
@@ -70,3 +69,33 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
+//
+//var body: some View {
+//        GeometryReader { proxy in
+//        ScrollView(.horizontal) {
+//            HStack {
+//                ForEach(ListItem.preview) { item in
+//                    item.color
+//                    
+//                        .frame(width: 400, height: 500)
+//                        .overlay {
+//                            Text(item.title)
+//                        }
+//                            .frame(width: proxy.size.width, height: proxy.size.height)
+//                        .scrollTransition(.interactive, axis: .horizontal) { effect, phase in
+//                            effect
+//                                .scaleEffect(phase.isIdentity ? 1 : 0.8)
+//                                    .offset(x: offset(for: phase))
+//                                    .blur(radius: 0.5)
+//                            
+//                        }
+//                }
+//            }
+//                .scrollTargetLayout()
+//        }
+//            .scrollTargetBehavior(.viewAligned)
+//        .scrollIndicators(.hidden)
+//        }
+//}
